@@ -33,15 +33,8 @@
 
 -(UIWindow *)window
 {
-    if (!_window) {
-        _window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-        _window.hidden = YES;
-        [_window setExclusiveTouch:YES];
-        UIEvent *event = [[UIEvent alloc] init];
-        [_window sendEvent:event];
-    }
     
-    return _window;
+    return [[UIApplication sharedApplication] delegate].window;
 }
 
 -(id)initWithTitle:(NSString *)title
@@ -203,7 +196,7 @@ destructiveButtonTitle:(NSString *)destructiveButtonTitle
         
         _itemsView.height = height;
         
-        [self animation];
+        
     }
     
     [self.window addSubview:self];
@@ -232,7 +225,7 @@ destructiveButtonTitle:(NSString *)destructiveButtonTitle
 
 -(void)show
 {
-    self.window.hidden = NO;
+    [self animation];
 }
 
 #pragma mark -- buttonClick
@@ -258,7 +251,7 @@ destructiveButtonTitle:(NSString *)destructiveButtonTitle
             [UIView animateWithDuration:0.1 animations:^{
                 self.alpha = 0;
             } completion:^(BOOL finished) {
-                self.window.hidden = YES;
+                
                 [self removeFromSuperview];
                 
                 if ([self.delegate respondsToSelector:@selector(actionSheet:didDismissWithButtonIndex:)]) {
@@ -287,7 +280,7 @@ destructiveButtonTitle:(NSString *)destructiveButtonTitle
         [UIView animateWithDuration:0.1 animations:^{
             self.alpha = 0;
         } completion:^(BOOL finished) {
-            self.window.hidden = YES;
+    
             [self removeFromSuperview];
             if ([self.delegate respondsToSelector:@selector(actionSheetCancel:)]) {
                 [self.delegate actionSheetCancel:self];

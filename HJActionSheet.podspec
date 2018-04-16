@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
   #名称，pod search 搜索的关键词,注意这里一定要和.podspec的名称一样,否则报错
   s.name         = "HJActionSheet"
   #版本号
-  s.version      = "1.0.1"
+  s.version      = "1.0.2"
   #支持的pod最低版本
   s.ios.deployment_target = '8.0'
   #简介
