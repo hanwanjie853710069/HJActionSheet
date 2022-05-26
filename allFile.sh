@@ -34,3 +34,4 @@ git push --tag
 pod spec lint HJActionSheet.podspec --verbose --allow-warnings
 
 pod trunk push HJActionSheet.podspec --verbose --allow-warnings
+
